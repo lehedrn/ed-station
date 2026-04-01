@@ -10,7 +10,7 @@ export default {
   clientSecret: 'saber3_secret', // 客户端密钥
   tenantMode: true, // 是否开启租户模式
   tenantId: '000000', // 管理组租户编号
-  captchaMode: true, // 是否开启验证码模式
+  captchaMode: false, // 是否开启验证码模式
   switchMode: false, // 是否开启登录切换角色部门
   lockPage: '/lock', // 锁屏页面地址
   tokenTime: 3000, // 定时刷新token间隔(单位:毫秒)
