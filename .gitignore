@@ -1,1 +1,14 @@
 logs
+
+# Playwright
+playwright-report/
+playwright-results/
+test-results/
+**/playwright-report/
+**/playwright-results/
+**/test-results/
+*.png
+!screenshots/.gitkeep
+
+# Screenshots (optional)
+screenshots/*.png
