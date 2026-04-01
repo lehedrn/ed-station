@@ -97,6 +97,7 @@ public enum DictEnum {
 	 * 用户平台
 	 */
 	USER_TYPE("user_type"),
+	MESSAGE_TYPE("message_type")
 	;
 
 	final String name;
