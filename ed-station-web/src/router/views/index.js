@@ -89,38 +89,39 @@ export default [
       },
     ],
   },
-  {
-    path: '/work/process/leave',
-    component: Layout,
-    redirect: '/work/process/leave/form',
-    children: [
-      {
-        path: 'form/:processDefinitionId',
-        name: '请假流程',
-        meta: {
-          i18n: 'work',
-        },
-        component: () =>
-          import(/* webpackChunkName: "views" */ '@/views/work/process/leave/form.vue'),
-      },
-      {
-        path: 'handle/:taskId/:processInstanceId/:businessId',
-        name: '处理请假流程',
-        meta: {
-          i18n: 'work',
-        },
-        component: () =>
-          import(/* webpackChunkName: "views" */ '@/views/work/process/leave/handle.vue'),
-      },
-      {
-        path: 'detail/:processInstanceId/:businessId',
-        name: '请假流程详情',
-        meta: {
-          i18n: 'work',
-        },
-        component: () =>
-          import(/* webpackChunkName: "views" */ '@/views/work/process/leave/detail.vue'),
-      },
-    ],
-  },
+  // 注释掉请假流程相关路由，因为相关文件已被删除
+  // {
+  //   path: '/work/process/leave',
+  //   component: Layout,
+  //   redirect: '/work/process/leave/form',
+  //   children: [
+  //     {
+  //       path: 'form/:processDefinitionId',
+  //       name: '请假流程',
+  //       meta: {
+  //         i18n: 'work',
+  //       },
+  //       component: () =>
+  //         import(/* webpackChunkName: "views" */ '@/views/work/process/leave/form.vue'),
+  //     },
+  //     {
+  //       path: 'handle/:taskId/:processInstanceId/:businessId',
+  //       name: '处理请假流程',
+  //       meta: {
+  //         i18n: 'work',
+  //       },
+  //       component: () =>
+  //         import(/* webpackChunkName: "views" */ '@/views/work/process/leave/handle.vue'),
+  //     },
+  //     {
+  //       path: 'detail/:processInstanceId/:businessId',
+  //       name: '请假流程详情',
+  //       meta: {
+  //         i18n: 'work',
+  //       },
+  //       component: () =>
+  //         import(/* webpackChunkName: "views" */ '@/views/work/process/leave/detail.vue'),
+  //     },
+  //   ],
+  // },
 ];
