@@ -8,3 +8,42 @@
 
 
 @docs/helper/bladex/demo/03-产出物料/03-提示词/01-开发准备提示词.md 根据该提示词开始执行
+
+
+先把本阶段sql完善。1，id要利用真实的雪花算法生成。2. 政务服务事项管理是一级菜单，没有父菜单。
+
+
+还未完成，目前插入sql中的汉字都会变成乱码，请修复这个问题。   
+
+继续，执行下一阶段
+
+开启并行subagent执行阶段3
+
+关于 @../docs/helper/bladex/demo/03-产出物料/03-提示词/04-联调测试提示词 我觉得是不准确的，我希望能够完全自动化测试，可以参考 @../docs/初始分析/cURL_接口测试示例.md @../docs/初始分析/Playwright_自动化测试指南.md 以及需求重新整理这一阶段的提示词。
+
+
+可以，开始按照 @../docs/helper/bladex/demo/03-产出物料/03-提示词/04-联调测试提示词.md执行
+
+
+先执行把测试报告存到 @../../docs/helper/bladex/demo/03-产出物料/ 合适的地方。                              
+
+
+开启subagent排查 前端页面，点击 事项信息管理 菜单，浏览器地址栏跳转到 http://localhost:3888/affair/manage 但是页面一片空白的问题。怀疑是路由问题，但是路由配置是通过菜单管理配置的，目前菜单管理配置的正常。因此，排除菜单配置问题。应该从其他角度排查。比如前端页面存放位置不对。参考 innermessage 模块的涉及的前端页面与js位置，对比分析看是否有问题。
+
+
+先根据本次修复，将之前一些因为规范或提示词没有指定到位而导致的问题，梳理然后整理到相关文档 @../../docs/前后端开发示例/ @../../docs/helper/bladex/demo/03-产出物料/03-提示词/ 
+
+
+阅读后端代码发现，本次开发，没有优先使用 mybatisplus ，而是基本上通过原生的mybatis的进行dao层的开发。另外，还有标记为 //TODO 的地方，说明代码没有完全完成。
+
+
+关于 多表 JOIN 分页查询，不是特别赞同，优先是有mybatisplus完成，另外关于字典的转换可以通过包装器来解决 可以查看  innermessage 模块的包装器  
+
+重启前后端服务，如果前后端服务端口被占用，则先停止占用端口的进程，再启动服务。
+
+经过实际浏览器测试，目前存在问题：
+1. 列表过滤条件 事项名称的输入框丢失了
+2. 列表只需要展示 事项名称、实现简称、事项类别、法定时限、承诺时限、事项状态、发布时间即可。
+3. 点击查看、编辑，页面提示 ### Error querying database. Cause: java.sql.SQLSyntaxErrorException: Unknown column 'status' in 'field list' ### The error may exist in org/springblade/modules/affair/mapper/AffairMaterialMapper.java (best guess) ### The error may involve defaultParameterMap ### The error occurred while setting parameters ### SQL: SELECT id, affair_id, attach_id, material_name, material_type, material_copies, material_remark, sort, tenant_id, create_user, create_dept, create_time, update_user, update_time, status, is_deleted FROM blade_affair_material WHERE is_deleted = 0 AND (affair_id = ?) ORDER BY sort ASC ### Cause: java.sql.SQLSyntaxErrorException: Unknown column 'status' in 'field list' ; bad SQL grammar []
+4. 新增页面 事项名称、事项简称输入框丢失
+为什么你自测时候都没有发现？
