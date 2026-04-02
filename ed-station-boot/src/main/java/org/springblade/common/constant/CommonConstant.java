@@ -40,6 +40,11 @@ public interface CommonConstant {
 	String APPLICATION_NAME = AppConstant.APPLICATION_NAME_PREFIX + "api";
 
 	/**
+	 * 政务服务模块名称
+	 */
+	String APPLICATION_AFFAIR_NAME = AppConstant.APPLICATION_NAME_PREFIX + "affair";
+
+	/**
 	 * sword 系统名
 	 */
 	String SWORD_NAME = "sword";

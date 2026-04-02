@@ -97,7 +97,22 @@ public enum DictEnum {
 	 * 用户平台
 	 */
 	USER_TYPE("user_type"),
-	MESSAGE_TYPE("message_type")
+	/**
+	 * 消息类型
+	 */
+	MESSAGE_TYPE("message_type"),
+	/**
+	 * 政务服务事项类别
+	 */
+	AFFAIR_TYPE("affair_type"),
+	/**
+	 * 政务服务事项状态
+	 */
+	AFFAIR_STATUS("affair_status"),
+	/**
+	 * 所需材料类型
+	 */
+	MATERIAL_TYPE("material_type")
 	;
 
 	final String name;
